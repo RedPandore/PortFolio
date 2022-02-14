@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('../fonts/PressStart2P-Regular.ttf');
+}
+body{
+    font-family: 'Press Start 2P';
+    background-color: black !important;
+}
+#modal1, #modal2, #modal3, #modal4 {
+  display: none;
+  width: 1400px;
+  height: 700px;
+  padding: 5px 20px 20px 10px;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+}
+
+#modal2{
+    display: none;
+}
+
+#modal3{
+    display: none;
+}
+
+#modal1{
+    display: block;
+}
+
+
+  

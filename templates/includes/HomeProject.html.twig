@@ -1,0 +1,31 @@
+<div class="outerProject nes-container is-rounded">
+    <div class="inner-left nes-container is-rounded">
+        <h2>Mes projets
+        </h2>
+        <ul class="list">
+            {% for project in projects %}
+                <li class="list-item nes-pointer" data-project="project{{ project.id }}">
+                    {{ project.name }}
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    <div class="inner-right nes-container is-rounded">
+        {% for project in projects %}
+            <div class="project-container" id="project{{ project.id }}" data-project="project{{ project.id}}">
+                <div class="img">
+                    <img src="{{ vich_uploader_asset(project, 'imageFile') }}" alt="{{ project.name }}">
+                </div>
+                <div class="description">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.description}}</p>
+                    <ul>
+                        {% for language in project.language %}
+                            <li>{{ language }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>

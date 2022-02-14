@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('game')}}
+    {{ encore_entry_script_tags('carouselJs')}}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('carousel') }}
+    {{ encore_entry_link_tags('skill') }}
+    {{ encore_entry_link_tags('profil') }}
+{% endblock %}
+{% block body %}
+    <div id="modal1" class="modal">
+        <button type="button" class="btn-close" aria-label="Close"><i class="nes-icon close is-small"></i></button>
+        {% include "includes/HomeProfil.html.twig" %}
+    </div>
+    <div id="modal2" class="modal">
+        <button type="button" class="btn-close" aria-label="Close"><i class="nes-icon close is-small"></i></button>
+      {% include "includes/HomeSkill.html.twig" %}
+        </div>
+
+        <div id="modal3" class="modal">
+            <button type="button" class="btn-close" aria-label="Close"><i class="nes-icon close is-small"></i></button>
+            {% include "includes/HomeProject.html.twig" %}
+        </div>
+
+
+    </div>
+
+    <div id="modal4" class="modal">
+        <button type="button" class="btn-close" aria-label="Close"></button>
+        <h4>Modal4</h4>
+        <input type="text" name="input1" placeholder="firstName"/><br/>
+        <input type="text" name="input2" placeholder="lastName"/><br/>
+        <button type="submit">submit</button>
+    </div>
+{% endblock %}

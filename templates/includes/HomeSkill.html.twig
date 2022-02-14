@@ -1,0 +1,113 @@
+<div class="outerSkill">
+    <div class="box nes-container is-rounded">
+        <h3>Back end</h3>
+        <hr>
+        <div class="inner_box">
+            {% for back in backs %}
+                <span class="tooltip" title="{{ back.description }}">
+                    <div class="skillBox nes-container is-rounded">
+                        <img src="{{ vich_uploader_asset(back, 'imageFile') }}" alt="{{ back.name }}">
+                        <div class="stars">
+                            {% for i in 1..5 %}
+                                {% if i <= back.maitrise %}
+                                    <i class="nes-icon is-small star"></i>
+                                {% else %}
+                                    <i class="nes-icon is-small star is-empty"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="box nes-container is-rounded">
+        <h3>Front end</h3>
+        <hr>
+        <div class="inner_box">
+            {% for front in fronts %}
+                <span class="tooltip" title="{{ front.description }}">
+                    <div class="skillBox nes-container is-rounded">
+                        <img src="{{ vich_uploader_asset(front, 'imageFile') }}" alt="{{ front.name }}">
+                        <div class="stars">
+                            {% for i in 1..5 %}
+                                {% if i <= front.maitrise %}
+                                    <i class="nes-icon is-small star"></i>
+                                {% else %}
+                                    <i class="nes-icon is-small star is-empty"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="box nes-container is-rounded">
+        <h3>Dev Ops</h3>
+        <hr>
+        <div class="inner_box">
+            {% for dev in devops %}
+                <span class="tooltip" title="{{ dev.description }}">
+                    <div class="skillBox nes-container is-rounded">
+                        <img src="{{ vich_uploader_asset(dev, 'imageFile') }}" alt="{{ dev.name }}">
+                        <div class="stars">
+                            {% for i in 1..5 %}
+                                {% if i <= dev.maitrise %}
+                                    <i class="nes-icon is-small star"></i>
+                                {% else %}
+                                    <i class="nes-icon is-small star is-empty"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="box nes-container is-rounded">
+        <h3>Autres</h3>
+        <hr>
+        <div class="inner_box">
+            {% for other in autres %}
+                <span class="tooltip" title="{{ other.description }}">
+                    <div class="skillBox nes-container is-rounded">
+                        <img src="{{ vich_uploader_asset(other, 'imageFile') }}" alt="{{ other.name }}">
+                        <div class="stars">
+                            {% for i in 1..5 %}
+                                {% if i <= other.maitrise %}
+                                    <i class="nes-icon is-small star"></i>
+                                {% else %}
+                                    <i class="nes-icon is-small star is-empty"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="box nes-container is-rounded">
+        <h3>Soft skills</h3>
+        <hr>
+        <div class="inner_box">
+            {% for soft in softs %}
+                <span class="tooltip" title="{{ soft.description }}">
+                    <div class="skillBox nes-container is-rounded">
+                        <img src="{{ vich_uploader_asset(soft, 'imageFile') }}" alt="{{ soft.name }}">
+                        <div class="stars">
+                            {% for i in 1..5 %}
+                                {% if i <= soft.maitrise %}
+                                    <i class="nes-icon is-small star"></i>
+                                {% else %}
+                                    <i class="nes-icon is-small star is-empty"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </span>
+            {% endfor %}
+
+        </div>
+    </div>
+</div></div>

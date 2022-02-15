@@ -26,7 +26,7 @@ class SkillCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             TextField::new('description'),
-            ChoiceField::new('categorie')->setChoices(['backEnd' => 'backEnd', 'frontEnd' => 'frontEnd', 'devOps' => 'devOps', 'Soft Skill' => 'Soft Skill', 'Autres' => 'Autres']),
+            ChoiceField::new('categorie')->setChoices(['backEnd' => 'backEnd', 'frontEnd' => 'frontEnd', 'devOps' => 'devOps', 'Soft Skill' => 'Soft Skill', 'Autres' => 'Autres', 'Profil' => 'Profil']),
             ImageField::new('imageName')
             ->setBasePath('/uploads/images/')
             ->hideOnForm(),

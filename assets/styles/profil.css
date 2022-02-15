@@ -1,80 +1,96 @@
+.profil_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 
-.left {
-    left: 25px;
-  }
-  
-  .right {
-    right: 25px;
-  }
-  
-  
-  .bottom {
-    position: absolute;
-    bottom: 25px;
-  }
-  
-  #gradient {
-    background: #999955;
-    background-image: linear-gradient(#DAB046 20%, #D73B25 20%, #D73B25 40%, #C71B25 40%, #C71B25 60%, #961A39 60%, #961A39 80%, #601035 80%);
-    margin: 0 auto;
-    margin-top: 100px;
-    width: 100vw;
-    height: 150px;
-  }
-  
-  #gradient:after {
-    content: "";
-    position: absolute;
-    background: #E9E2D0;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -285px;
-    padding-left: 20px;
-    border-radius: 5px;
-    width: 720px;
-    height: 400px;
-    z-index: -1;
-  }
-  
-  #card {
-    position: absolute;
-    width: 650px;
-    height: 350px;
-    padding: 25px;
+.profil_left {
+    background-color: #caab7c;
+    background-image: url('https://transparenttextures.com/patterns/natural-paper.png');
+  height: 700px;
+  width: 550px;
+  margin-left: 50px;
+}
+.profil_left_top {
+  display: flex;
+  flex-direction: row;
+}
+.profil_left_top .img_profil {
+  width: 200px;
+  height: 200px;
+}
+.profil_left_top .profil_info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  text-align: center;
+}
+.profil_middle_social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.profil_middle_social img{
+    width: 50px;
+    height: 50px;
+}
+.profil_left_bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.profil_left_bottom_left,
+.profil_left_bottom_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profil_left_bottom_left{
+    border-right: 1px solid black;
+    width: 75%;
+}
+.profil_left_bottom_right{
+    border-left: 1px solid black;
+    width: 75%;
+}
+.profil_left_bottom_right .skillBox,
+.profil_left_bottom_left .stuffBox {
+  margin: 10px;
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+}
+.profil_left_bottom_right .skillBox p,
+.profil_left_bottom_left .stuffBox p {
+    font-size: 12px;
+}
+.profil_left_bottom_right .nes-container.is-rounded,
+.profil_left_bottom_left .nes-container.is-rounded {
+    padding: 0.5rem 0.8rem;
+    }
+    
+.profil_left_bottom_right .skillBox img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+.profil_left_bottom_left .stuffBox img{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
 
- 
-    left: 50%;
-    top: 67.5px;
-    margin-left: -250px;
-    background: #E9E2D0;
-    box-shadow: -20px 0 35px -25px black, 20px 0 35px -25px black;
-    z-index: 5;
-  }
-  
-  #card img {
-    width: 150px;
-    float: left;
-    border-radius: 5px;
-    margin-right: 20px;
-    -webkit-filter: sepia(1);
-    -moz-filter: sepia(1);
-    filter: sepia(1);
-  }
-  
-  #card h2 {
-    font-family: courier;
-    color: #333;
-    margin: 0 auto;
-    padding: 0;
-    font-size: 15pt;
-  }
-  
-  #card p {
-    font-family: courier;
-    color: #555;
-    font-size: 13px;
-  }
-  
-  #card span {
-    font-family: courier;
-  }
+.profil_right {
+    background-color: #caab7c;
+    background-image: url('https://transparenttextures.com/patterns/natural-paper.png');
+  height: 450px;
+  width: 700px;
+  overflow: scroll;
+}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ProjectRepository;
 use App\Repository\SkillRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ProjectRepository $projectRepository, SkillRepository $skillRepository): Response
+    public function index(ProjectRepository $projectRepository, SkillRepository $skillRepository, UserRepository $userRepository): Response
     {
         $projects = $projectRepository->findAll();
         $skills = $skillRepository->findAll();
@@ -30,6 +31,12 @@ class HomeController extends AbstractController
         $soft =  array_filter($skills, function ($skill) {
             return $skill->getCategorie() === 'Soft Skill';
         });
+        $profil =  array_filter($skills, function ($skill) {
+            return $skill->getCategorie() === 'Profil';
+        });
+
+        $tennessee = $userRepository->findBy(['firstname' => 'Tennessee']);
+    
         return $this->render('home/index.html.twig', [
             'projects' => $projects,
             'fronts' => $front,
@@ -37,6 +44,8 @@ class HomeController extends AbstractController
             'autres' => $autres,
             'devops' => $devops,
             'softs' => $soft,
+            'tennessee' => $tennessee,
+            'profils' => $profil,
 
 
         ]);

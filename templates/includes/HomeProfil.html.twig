@@ -1,17 +1,66 @@
-<div id="gradient"></div>
-        <div id="card">
-            <img src="{{ asset('build/images/tens.jpeg') }}" alt="tens"/>
-            <h2>Houry Tennessee</h2>
-            <p>Developpeur Web / Web Mobile</p>
-            <p>
-                Passionné de nouvelles technologies, j'ai commencé ma vie
-                                                                                    professionnelle dans l'électronique. Les différents projets
-                                                                                    que j’ai pu réaliser dans ce domaine m'ont aidé à développer
-                                                                                    ma capacité d’adaptation et ma rigueur. Pour moi, la suite
-                                                                                    logique était d'apprendre la programmation. Je me suis donc
-                                                                                    reconverti en Développeur Web / Web Mobile, car c'est un
-                                                                                    domaine en constante évolution.
-            </p>
-            <span class="left bottom">07 61 79 33 55</span>
-            <span class="right bottom">Loury, France</span>
+{% for user in tennessee %}
+    <div class="profil_container">
+        <div class="profil_left nes-container is-rounded">
+        <!-- Test -->
+        <button type="button" class="btn-close" id="close-modal" aria-label="Close"><i class="nes-icon close is-small"></i></button>
+        <!-- fin -->
+            <div class="profil_left_top">
+                <div class="img_profil">
+                    <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.firstname }} image">
+                </div>
+                <div class="profil_info">
+                    <h3>{{user.firstname}}
+                        {{user.lastname}}</h3>
+                    <p>{{user.job}}</p>
+                    <p>
+                        {{ user.phone }}</p>
+                    <div class="profil_middle_social">
+                        <a href="{{ user.github }}" target="_blank">
+                            <i class="nes-icon github is-medium"></i>
+                        </a>
+                        <a href="mailto:{{ user.email }}" target="_blank">
+                            <i class="nes-icon gmail is-medium"></i>
+                        </a>
+                        <a href="{{ user.linkedin }}" target="_blank">
+                            <i class="nes-icon linkedin is-medium"></i>
+                        </a>
+                        <a href="{{ user.discord }}" target="_blank">
+                            <img src="{{ asset('build/images/discord.png') }}" alt="discord" style="image-rendering: pixelated;">
+                        </a>
+                    </div>
+                </div>
+            </div><hr>
+
+
+            <div class="profil_left_bottom ">
+                <div class="profil_left_bottom_left">
+                    <h4>
+                        Équipements
+                    </h4>
+                    {% for skill in profils %}
+                        <div class="stuffBox nes-container is-rounded">
+                            <img src="{{ vich_uploader_asset(skill, 'imageFile') }}" alt="{{ skill.name }} image">
+                            <p>
+                                {{ skill.name }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="profil_left_bottom_right">
+                    <h4>
+                        Compétences
+                    </h4>
+                    {% for soft in softs %}
+                        <div class="skillBox nes-container is-rounded">
+                            <img src="{{ vich_uploader_asset(soft, 'imageFile') }}" alt="{{ soft.name }}">
+                            <p>{{ soft.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
+        <div class="profil_right nes-container is-rounded">
+            {{ user.description|raw}}
+        </div>
+    </div>
+{% endfor %}

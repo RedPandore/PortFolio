@@ -136,15 +136,14 @@ class MyGame extends Phaser.Scene {
 
 function createModal(objName) {
     let element = document.getElementById(objName);
+    let button = element.querySelector('#close-modal')
     element.style.display = 'block';
-    for (let i = 0; i < element.children.length; i++) {
-        element.children[i].tagName === 'BUTTON'
-            ? element.children[i].addEventListener('click', () =>
+    button.addEventListener('click', () =>
                   closeModal(objName)
               )
-            : null;
+            
     }
-}
+
 function closeModal(objName) {
     let element = document.getElementById(objName);
     element.style.display = 'none';

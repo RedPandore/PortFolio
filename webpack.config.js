@@ -51,6 +51,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('game', './assets/game/index.js')
     .addEntry('carouselJs', './assets/scripts/carousel.js')
+    .addEntry('easyStar', './assets/scripts/easystar.js')
 
     .addStyleEntry('carousel', './assets/styles/carousel.css')
     .addStyleEntry('skill', './assets/styles/skill.css')

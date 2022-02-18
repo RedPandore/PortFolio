@@ -27,6 +27,16 @@ body{
 #modal1{
     display: none;
 }
+#modal4{
+    display: block;
+}
+.btn-close{
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
   

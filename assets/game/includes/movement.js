@@ -1,3 +1,5 @@
+
+
 export function setKeyboardMovement(player, cursors) {
     if (cursors.left.isDown) {
         player.setVelocityX(-160);
@@ -16,7 +18,7 @@ export function setKeyboardMovement(player, cursors) {
 }
 
 export function setMouseMovement(player, target) {
-
+       
         // move with mouse click
         var distance = Phaser.Math.Distance.Between(
             player.x,

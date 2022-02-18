@@ -18,21 +18,13 @@
         {% include "includes/HomeProfil.html.twig" %}
     </div>
     <div id="modal2" class="modal">
-      {% include "includes/HomeSkill.html.twig" %}
-        </div>
-
-        <div id="modal3" class="modal">
-            {% include "includes/HomeProject.html.twig" %}
-        </div>
-
-
+        {% include "includes/HomeSkill.html.twig" %}
     </div>
 
+    <div id="modal3" class="modal">
+        {% include "includes/HomeProject.html.twig" %}
+    </div>
     <div id="modal4" class="modal">
-        <button type="button" class="btn-close" aria-label="Close"></button>
-        <h4>Modal4</h4>
-        <input type="text" name="input1" placeholder="firstName"/><br/>
-        <input type="text" name="input2" placeholder="lastName"/><br/>
-        <button type="submit">submit</button>
+        {% include "includes/HomeGame.html.twig" %}
     </div>
 {% endblock %}

@@ -12,7 +12,6 @@ import { PhaserNavMeshPlugin } from 'phaser-navmesh';
 import { setCoatAnimation } from './includes/coat.js';
 import { Scene2 } from './scene2';
 
-
 class MyGame extends Phaser.Scene {
     constructor() {
         super(MyGame);
@@ -37,6 +36,7 @@ class MyGame extends Phaser.Scene {
     }
 
     create() {
+        
         // create the tilemap
         const map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage('!CL_DEMO_32x32', 'tiles');
@@ -44,6 +44,7 @@ class MyGame extends Phaser.Scene {
         const decorWalkable = map.createLayer('DecorWalkable', tileset, 0, 0);
         const mur = map.createLayer('Mur', tileset, 0, 0);
         const physics = this.physics;
+        allPhysics = physics; 
         // Set the collisions tiles
         mur.setCollisionByProperty({ collides: true });
         // set spawn point
@@ -51,22 +52,13 @@ class MyGame extends Phaser.Scene {
             'myObjects',
             (obj) => obj.name === 'spawn'
         );
-        /*
+        
         ////////////  nav mesh////////////
-        const navMesh = this.navMeshPlugin.buildMeshFromTilemap('mesh1', map, [
-            mur,
-        ]);
+        const objectLayer = map.getObjectLayer("navmesh");
+        const navMesh = this.navMeshPlugin.buildMeshFromTiled("mesh1", objectLayer, 32);
         const graphic = this.add.graphics(0, 0).setAlpha(0.5);
-        navMesh.enableDebug(graphic);
-        navMesh.debugDrawMesh({
-            drawCentroid: true,
-            drawBounds: false,
-            drawNeighbors: true,
-            drawPortals: true,
-        });
-
         /////////// end nav mesh////////////
-*/
+
         /////////// Set the player //////////
         player = physics.add
             .sprite(spawnPoint.x, spawnPoint.y, 'characters')
@@ -99,9 +91,7 @@ class MyGame extends Phaser.Scene {
         setFishAnimations(this);
         //////////// end SetAllTheFish ////////////
         /////////// SetAllCoat //////////
-        var coatStartingPosition = [
-            [150, 300],
-        ];
+        var coatStartingPosition = [[150, 300]];
         coatStartingPosition.forEach(function (coatPosition, index) {
             coat[index] = physics.add
                 .sprite(coatPosition[0], coatPosition[1], 'coat')
@@ -144,29 +134,19 @@ class MyGame extends Phaser.Scene {
         this.input.on(
             'pointerup',
             function (pointer) {
-                target.x = pointer.x;
-                target.y = pointer.y;
-                onClick = true;
-                physics.moveToObject(player, target, 200);
-                /*  /////////// navMesh test ///////////
-              
-              var path = navMesh.findPath(
-                    { x: player.x, y: player.y },
-                    { x: pointer.x, y: pointer.y }
-                );
-
-                navMesh.debugDrawPath(path, 0xffd900);
-                path.forEach((step) => {
-                    physics.moveToObject(player, { x: step.x, y: step.y }, 0,200);
-                });*/
+                const start = new Phaser.Math.Vector2(player.x, player.y);
+                const end = new Phaser.Math.Vector2(pointer.x, pointer.y);
+                goToPos(end, player, navMesh)
             },
             this
         );
+        scene = this.scene;
+
     }
 
-    update() {
+    update(time, deltaTime) {
         //////////// movement ////////////
-        if (
+       if (
             !onClick &&
             !cursors.left.isDown &&
             !cursors.right.isDown &&
@@ -186,6 +166,26 @@ class MyGame extends Phaser.Scene {
         }
         //////////// end movement ////////////
 
+        if(currentTarget){
+            const { x, y } = currentTarget;
+            const distance = Phaser.Math.Distance.Between(player.x, player.y, x, y);
+            if (distance < 5){
+                if(path.length > 0){
+                    currentTarget = path.shift();
+                }   else{
+                    currentTarget = null;
+                }
+            }
+            let speed = 200;
+            if( path.lenght === 0 && distance < 50){
+                speed = speedMovement(distance, 50, 0, 200, 50)
+            }
+            if(currentTarget){
+                moveTowards(currentTarget, speed, deltaTime /1000 , player)
+            }
+        }
+
+
         //////////// modal objects ////////////
 
         //  get the name of modal object player are touching
@@ -196,10 +196,11 @@ class MyGame extends Phaser.Scene {
                 createModal(objName);
 
                 // stop player movement if click
-                if (onClick) {
+               if (onClick) {
                     player.body.reset(target.x, target.y);
                     onClick = false;
                 }
+                currentTarget = null;
                 player.setVelocityY(160);
             }
         });
@@ -211,8 +212,8 @@ class MyGame extends Phaser.Scene {
         // check if coat is blocked
         checkAnimalCollision(coat, coatAnimationName);
         document.getElementById('open-game').onclick = function () {
-
             game.scene.stop('default');
+            this.parentNode.style.display = 'none';
             game.scene.start('scene2');
         };
     }
@@ -229,8 +230,23 @@ function closeModal(objName) {
     let element = document.getElementById(objName);
     element.style.display = 'none';
 }
+function goToPos(end, player, navMesh){
+path = navMesh.findPath(new Phaser.Math.Vector2(player.x, player.y), end);
+if (path && path.length > 0) currentTarget = path.shift();
+else currentTarget = null;
+}
+function moveTowards(targetPosition, maxSpeed = 200, elapsedSeconds, player){
+    const { x, y } = targetPosition;
+    const angle = Phaser.Math.Angle.Between(player.x, player.y, x, y);
+    const distance = Phaser.Math.Distance.Between(player.x, player.y, x, y);
+    const targetSpeed = distance / elapsedSeconds;
+    const magnitude = Math.min(maxSpeed, targetSpeed);
 
-function checkAnimalCollision(animals, animationName){
+    allPhysics.velocityFromRotation(angle, magnitude, player.body.velocity);
+}
+
+
+function checkAnimalCollision(animals, animationName) {
     animals.forEach((animal) => {
         if (animal.body.blocked.down === true) {
             animal.setVelocityY(-50);
@@ -253,8 +269,11 @@ function checkAnimalCollision(animals, animationName){
 
 const config = {
     type: Phaser.AUTO,
-    width: 1800,
+   width: 1800,
     height: 900,
+    scale: {
+            mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
+    },
     pixelArt: true,
     physics: {
         default: 'arcade',
@@ -277,6 +296,7 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+var allPhysics;
 var player;
 var cursors;
 
@@ -298,3 +318,11 @@ var coatAnimationName = {
     left: 'leftCoat',
     right: 'rightCoat',
 };
+
+
+var path;
+var currentTarget;
+const speedMovement = (value, min, max, newMin, newMax) => {
+    return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
+  };
+  var scene;

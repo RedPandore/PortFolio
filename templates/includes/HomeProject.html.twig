@@ -15,11 +15,12 @@
     <div class="inner-right nes-container is-rounded">
         {% for project in projects %}
             <div class="project-container" id="project{{ project.id }}" data-project="project{{ project.id}}">
+            <h3>{{ project.name }}</h3>
                 <div class="img">
                     <img src="{{ vich_uploader_asset(project, 'imageFile') }}" alt="{{ project.name }}">
                 </div>
                 <div class="description">
-                    <h3>{{ project.name }}</h3>
+                    
                     <p>{{ project.description}}</p>
                     <ul>
                         {% for language in project.language %}

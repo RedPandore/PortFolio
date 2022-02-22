@@ -1,17 +1,34 @@
 
 
 export function setKeyboardMovement(player, cursors) {
-    if (cursors.left.isDown) {
-        player.setVelocityX(-160);
+    player.setVelocity(0);
+    if (cursors.left.isDown && !cursors.up.isDown && !cursors.down.isDown) {
+        player.setVelocityX(-150);
         player.anims.play('left', true);
-    } else if (cursors.right.isDown) {
-        player.setVelocityX(160);
+    } else if (cursors.right.isDown && !cursors.up.isDown && !cursors.down.isDown) {
+        player.setVelocityX(150);
         player.anims.play('right', true);
-    } else if (cursors.up.isDown) {
-        player.setVelocityY(-160);
+    } else if (cursors.up.isDown && !cursors.right.isDown && !cursors.left.isDown) {
+        player.setVelocityY(-150);
         player.anims.play('up', true);
-    } else if (cursors.down.isDown) {
-        player.setVelocityY(160);
+    } else if (cursors.down.isDown && !cursors.right.isDown && !cursors.left.isDown) {
+        player.setVelocityY(150);
+        player.anims.play('down', true);
+    }else if (cursors.left.isDown && cursors.up.isDown) {
+        player.setVelocityX(-75);
+        player.setVelocityY(-75);
+        player.anims.play('up', true);
+    }else if(cursors.right.isDown && cursors.up.isDown){
+        player.setVelocityX(75);
+        player.setVelocityY(-75);
+        player.anims.play('up', true);
+    }else if (cursors.left.isDown && cursors.down.isDown) {
+        player.setVelocityX(-75);
+        player.setVelocityY(75);
+        player.anims.play('down', true);
+    }else if (cursors.right.isDown && cursors.down.isDown) {
+        player.setVelocityX(75);
+        player.setVelocityY(75);
         player.anims.play('down', true);
     }
     

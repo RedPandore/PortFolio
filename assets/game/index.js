@@ -36,7 +36,6 @@ class MyGame extends Phaser.Scene {
     }
 
     create() {
-        
         // create the tilemap
         const map = this.make.tilemap({ key: 'map' });
         const tileset = map.addTilesetImage('!CL_DEMO_32x32', 'tiles');
@@ -44,7 +43,7 @@ class MyGame extends Phaser.Scene {
         const decorWalkable = map.createLayer('DecorWalkable', tileset, 0, 0);
         const mur = map.createLayer('Mur', tileset, 0, 0);
         const physics = this.physics;
-        allPhysics = physics; 
+        allPhysics = physics;
         // Set the collisions tiles
         mur.setCollisionByProperty({ collides: true });
         // set spawn point
@@ -52,10 +51,14 @@ class MyGame extends Phaser.Scene {
             'myObjects',
             (obj) => obj.name === 'spawn'
         );
-        
+
         ////////////  nav mesh////////////
-        const objectLayer = map.getObjectLayer("navmesh");
-        const navMesh = this.navMeshPlugin.buildMeshFromTiled("mesh1", objectLayer, 32);
+        const objectLayer = map.getObjectLayer('navmesh');
+        const navMesh = this.navMeshPlugin.buildMeshFromTiled(
+            'mesh1',
+            objectLayer,
+            32
+        );
         const graphic = this.add.graphics(0, 0).setAlpha(0.5);
         /////////// end nav mesh////////////
 
@@ -136,17 +139,16 @@ class MyGame extends Phaser.Scene {
             function (pointer) {
                 const start = new Phaser.Math.Vector2(player.x, player.y);
                 const end = new Phaser.Math.Vector2(pointer.x, pointer.y);
-                goToPos(end, player, navMesh)
+                goToPos(end, player, navMesh);
             },
             this
         );
         scene = this.scene;
-
     }
 
     update(time, deltaTime) {
         //////////// movement ////////////
-       if (
+        if (
             !onClick &&
             !cursors.left.isDown &&
             !cursors.right.isDown &&
@@ -166,25 +168,29 @@ class MyGame extends Phaser.Scene {
         }
         //////////// end movement ////////////
 
-        if(currentTarget){
+        if (currentTarget) {
             const { x, y } = currentTarget;
-            const distance = Phaser.Math.Distance.Between(player.x, player.y, x, y);
-            if (distance < 5){
-                if(path.length > 0){
+            const distance = Phaser.Math.Distance.Between(
+                player.x,
+                player.y,
+                x,
+                y
+            );
+            if (distance < 5) {
+                if (path.length > 0) {
                     currentTarget = path.shift();
-                }   else{
+                } else {
                     currentTarget = null;
                 }
             }
             let speed = 200;
-            if( path.lenght === 0 && distance < 50){
-                speed = speedMovement(distance, 50, 0, 200, 50)
+            if (path.lenght === 0 && distance < 50) {
+                speed = speedMovement(distance, 50, 0, 200, 50);
             }
-            if(currentTarget){
-                moveTowards(currentTarget, speed, deltaTime /1000 , player)
+            if (currentTarget) {
+                moveTowards(currentTarget, speed, deltaTime / 1000, player);
             }
         }
-
 
         //////////// modal objects ////////////
 
@@ -194,9 +200,8 @@ class MyGame extends Phaser.Scene {
             } else if (this.physics.world.overlap(player, obj)) {
                 let objName = obj.name;
                 createModal(objName);
-
                 // stop player movement if click
-               if (onClick) {
+                if (onClick) {
                     player.body.reset(target.x, target.y);
                     onClick = false;
                 }
@@ -211,9 +216,10 @@ class MyGame extends Phaser.Scene {
         checkAnimalCollision(fish, fishAnimationName);
         // check if coat is blocked
         checkAnimalCollision(coat, coatAnimationName);
-        document.getElementById('open-game').onclick = function () {
+        document.getElementById('open-game2').onclick = function () {
+            var modal4 = document.getElementById('modal4');
             game.scene.stop('default');
-            this.parentNode.style.display = 'none';
+            modal4.style.display = 'none';
             game.scene.start('scene2');
         };
     }
@@ -221,21 +227,24 @@ class MyGame extends Phaser.Scene {
 
 function createModal(objName) {
     let element = document.getElementById(objName);
-    let button = element.querySelector('#close-modal');
+    let buttons = element.querySelectorAll('#close-modal');
     element.style.display = 'block';
-    button.addEventListener('click', () => closeModal(objName));
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => closeModal(objName));
+    });
 }
 
 function closeModal(objName) {
+    console.log(objName);
     let element = document.getElementById(objName);
     element.style.display = 'none';
 }
-function goToPos(end, player, navMesh){
-path = navMesh.findPath(new Phaser.Math.Vector2(player.x, player.y), end);
-if (path && path.length > 0) currentTarget = path.shift();
-else currentTarget = null;
+function goToPos(end, player, navMesh) {
+    path = navMesh.findPath(new Phaser.Math.Vector2(player.x, player.y), end);
+    if (path && path.length > 0) currentTarget = path.shift();
+    else currentTarget = null;
 }
-function moveTowards(targetPosition, maxSpeed = 200, elapsedSeconds, player){
+function moveTowards(targetPosition, maxSpeed = 200, elapsedSeconds, player) {
     const { x, y } = targetPosition;
     const angle = Phaser.Math.Angle.Between(player.x, player.y, x, y);
     const distance = Phaser.Math.Distance.Between(player.x, player.y, x, y);
@@ -244,7 +253,6 @@ function moveTowards(targetPosition, maxSpeed = 200, elapsedSeconds, player){
 
     allPhysics.velocityFromRotation(angle, magnitude, player.body.velocity);
 }
-
 
 function checkAnimalCollision(animals, animationName) {
     animals.forEach((animal) => {
@@ -269,10 +277,10 @@ function checkAnimalCollision(animals, animationName) {
 
 const config = {
     type: Phaser.AUTO,
-   width: 1800,
+    width: 1800,
     height: 900,
     scale: {
-            mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
+        mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
     },
     pixelArt: true,
     physics: {
@@ -319,10 +327,9 @@ var coatAnimationName = {
     right: 'rightCoat',
 };
 
-
 var path;
 var currentTarget;
 const speedMovement = (value, min, max, newMin, newMax) => {
     return ((value - min) / (max - min)) * (newMax - newMin) + newMin;
-  };
-  var scene;
+};
+var scene;

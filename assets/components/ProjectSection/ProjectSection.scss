@@ -1,0 +1,9 @@
+.projectSection{
+    height: 100vh;
+    .project-container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}

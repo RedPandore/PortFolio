@@ -1,0 +1,13 @@
+@import '../../../../styles/basic/variable.scss';
+.contact-item{
+    a:link, a:visited{
+        text-decoration: none;
+        color: white;
+       svg{
+            width: 35px;
+            height: 35px;
+            fill: $flash-color;
+        
+       }
+    }
+}

@@ -9,9 +9,13 @@ use App\Repository\ProjectRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
+#[ApiResource(
+    collectionOperations: ['get'],
+    itemOperations: ['get'],
+)]
 /**
  * @Vich\Uploadable
  */
@@ -31,15 +35,18 @@ class Project
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\Column(type: 'array')]
-    private $language = [];
-
     #[ORM\Column(type: 'string', length: 255)]
     private $imageName;
 /**
  * @Vich\UploadableField(mapping="project_image", fileNameProperty="imageName")
  */
     private $imageFile;
+
+    #[ORM\Column(type: 'array')]
+    private $backEnd = [];
+
+    #[ORM\Column(type: 'array')]
+    private $frontEnd = [];
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
@@ -85,17 +92,6 @@ class Project
         return $this;
     }
 
-    public function getLanguage(): ?array
-    {
-        return $this->language;
-    }
-
-    public function setLanguage(array $language): self
-    {
-        $this->language = $language;
-
-        return $this;
-    }
 
     public function getImageName(): ?string
     {
@@ -137,6 +133,33 @@ class Project
     public function setUpdatedAt(string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+
+    public function getBackEnd(): ?array
+    {
+        return $this->backEnd;
+    }
+
+    public function setBackEnd(array $backEnd): self
+    {
+        $this->backEnd = $backEnd;
+
+        return $this;
+    }
+
+
+    public function getFrontEnd(): ?array
+    {
+        return $this->frontEnd;
+    }
+
+
+    public function setFrontEnd(array $frontEnd): self
+    {
+        $this->frontEnd = $frontEnd;
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\ContactMessage;
 use App\Entity\User;
 use App\Entity\Skill;
 use App\Entity\Project;
@@ -50,5 +51,6 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Compétences', 'fas fa-list', Skill::class);
         yield MenuItem::linkToCrud('Projets', 'fas fa-project-diagram', Project::class);
+        yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', ContactMessage::class);
     }
 }

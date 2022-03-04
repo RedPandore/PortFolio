@@ -1,4 +1,9 @@
 # Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+fos_ck_editor:
+    configs:
+        basic_conf:
+            language: fr
+            toolbar: full
 
 twig:
     form_themes:

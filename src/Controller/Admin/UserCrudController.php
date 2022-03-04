@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -13,7 +14,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\TextEditorType;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -60,8 +60,8 @@ class UserCrudController extends AbstractCrudController
             TextField::new(propertyName: 'country', label: 'Pays')
                 ->setTextAlign('center'),
             TextEditorField::new(propertyName: 'description', label: 'Description')
+                ->setFormType(CKEditorType::class)
                 ->setTextAlign('center')
-                ->setFormType(TextEditorType::class)
                 ->onlyOnForms(),
 
             ImageField::new('imageName')
@@ -70,7 +70,11 @@ class UserCrudController extends AbstractCrudController
             TextareaField::new(propertyName: 'imageFile', label: 'Image de profil')
                 ->setFormType(VichImageType::class)
                 ->onlyOnForms(),
-
         ];
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
     }
 }

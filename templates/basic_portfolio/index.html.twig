@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Houry Tennessee
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+     {{ encore_entry_script_tags('index') }} 
+{% endblock %}
+
+{% block body %}
+    <div id="root"></div>
+{% endblock %}

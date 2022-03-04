@@ -23,7 +23,8 @@ class ProjectCrudController extends AbstractCrudController
         return [
             TextField::new('name'),
             TextField::new('link'),
-            CollectionField::new('language'),
+            CollectionField::new('backEnd'),
+            CollectionField::new('frontEnd'),
             TextField::new('description'),
             ImageField::new('imageName')
             ->setBasePath('/uploads/images/')

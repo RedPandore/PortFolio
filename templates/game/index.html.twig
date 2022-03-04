@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    
+    {{ encore_entry_script_tags('game')}}
+    {{ encore_entry_script_tags('carouselJs')}}
+
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('carousel') }}
+    {{ encore_entry_link_tags('skill') }}
+    {{ encore_entry_link_tags('profil') }}
+    {{ encore_entry_link_tags('gameModal') }}
+    {{ encore_entry_link_tags('appGame') }}
+{% endblock %}
+{% block body %}
+    <div id="modal1" class="modal">
+        {% include "includes/HomeProfil.html.twig" %}
+    </div>
+    <div id="modal2" class="modal">
+        {% include "includes/HomeSkill.html.twig" %}
+    </div>
+
+    <div id="modal3" class="modal">
+        {% include "includes/HomeProject.html.twig" %}
+    </div>
+    <div id="modal4" class="modal">
+        {% include "includes/HomeGame.html.twig" %}
+    </div>
+    <div id="modal6" class="modal">
+        {% include "includes/Scene2Start.html.twig" %}
+    </div>
+        <div id="modal5" class="modal">
+        {% include "includes/Scene2GameOver.html.twig" %}
+    </div>
+{% endblock %}

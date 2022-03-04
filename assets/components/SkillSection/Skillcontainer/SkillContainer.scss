@@ -1,0 +1,15 @@
+@import '../../../styles/basic/variable.scss';
+
+.skill-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(163, 163, 163, 0.227);
+    width: 60vw;
+    margin: $section-margin;
+    background-color: $dark-color;
+}

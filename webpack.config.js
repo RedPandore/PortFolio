@@ -53,9 +53,16 @@ Encore
     .addEntry('carouselJs', './assets/scripts/carousel.js')
     .addEntry('easyStar', './assets/scripts/easystar.js')
 
-    .addStyleEntry('carousel', './assets/styles/carousel.css')
-    .addStyleEntry('skill', './assets/styles/skill.css')
-    .addStyleEntry('profil', './assets/styles/profil.css')
+    .addEntry('index', './assets/index.js')
+
+
+
+
+    .addStyleEntry('carousel', './assets/styles/game/carousel.css')
+    .addStyleEntry('skill', './assets/styles/game/skill.css')
+    .addStyleEntry('profil', './assets/styles/game/profil.css')
+    .addStyleEntry('gameModal', './assets/styles/game/gameModal.css')
+    .addStyleEntry('appGame', './assets/styles/game/appGame.css')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -75,7 +82,7 @@ Encore
      * https://symfony.com/doc/current/frontend.html#adding-more-features
      */
     .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
+    //enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
@@ -88,16 +95,16 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
-    });
+    })
 
-// enables Sass/SCSS support
-//.enableSassLoader()
+    // enables Sass/SCSS support
+    .enableSassLoader()
 
-// uncomment if you use TypeScript
-//.enableTypeScriptLoader()
+    // uncomment if you use TypeScript
+    //.enableTypeScriptLoader()
 
-// uncomment if you use React
-//.enableReactPreset()
+    // uncomment if you use React
+    .enableReactPreset();
 
 // uncomment to get integrity="..." attributes on your script & link tags
 // requires WebpackEncoreBundle 1.4 or higher

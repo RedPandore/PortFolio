@@ -1,0 +1,14 @@
+@import '../../styles/basic/variable.scss';
+
+.contactSection {
+    height: 100vh;
+    overflow: hidden;
+
+    .contact-container {
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

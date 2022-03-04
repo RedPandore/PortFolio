@@ -1,0 +1,62 @@
+@import './variable.scss';
+
+#root {
+    background-color: $dark-color;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+
+}
+.home{
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.home-container {
+    width: 75vw;
+    margin: auto;
+    color: $light-color;
+
+}
+.section-title {
+    color: $flash-color;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 35px;
+    .line {
+        margin-bottom: 0.2rem;
+        margin-left: 00.2rem;
+        display: inline-block;
+        width: 5rem;
+        height: 0.2rem;
+        background: $flash-color;
+    }
+}
+.button{
+    background-color: $flash-color;
+    color: $dark-color;
+    
+    border: 1px solid $flash-color;
+    border-radius: 0.25em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: $dark-color;
+        color: $flash-color;
+        border: 1px solid $flash-color;
+    }
+}
+span[class='overlight'] {
+    color: $flash-color;
+}
+.mandatory-scroll-snapping{
+scroll-snap-align: start;
+}
+a{
+    text-decoration: none;
+    color: $light-color;
+}

@@ -1,0 +1,50 @@
+.outerSkill {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.outerSkill .box {
+  width: 400px;
+  height: 350px;
+  /* haut | droit | bas | gauche */
+  margin: 0 20px 20px 20px;
+  background-color: #caab7c;
+  background-image: url('../../images/natural-paper.png');
+  overflow: scroll;
+}
+.outerSkill .box h3 {
+  text-align: center;
+}
+.outerSkill .box hr {
+  width: 85%;
+  border: 1px solid whitesmoke;
+}
+.outerSkill .box .inner_box {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.outerSkill .box .inner_box .skillBox {
+    background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 12px;
+  margin: 15px;
+  padding: 5px;
+}
+
+.outerSkill .box img {
+  height: 50px;
+  width: 50px;
+}
+.nes-icon.is-small {
+  transform: scale(0.6);
+  padding: 0;
+}
+.nes-icon {
+  width: 10px;
+  height: 10px;
+}

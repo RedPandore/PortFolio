@@ -1,0 +1,30 @@
+
+@import '../../../../styles/basic/variable.scss';
+.skill-box {
+    width: 110px;
+    height: 110px;
+    padding: 10px;
+    margin: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    border: 1px solid $medium-color;
+    border-radius: 15px;
+    -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25; 
+    box-shadow:  0px 4px 8px rgba(134, 151, 168, 0.1);
+    background-color: $dark-color;
+    .skill-box-title {
+        text-align: center;
+    }
+    .skill-box-image {
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    &:hover{
+        animation: bounce 0.35s ease infinite alternate;
+    }
+}

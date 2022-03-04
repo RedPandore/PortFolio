@@ -1,13 +1,19 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
 
-// any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 
-// start the Stimulus application
 import './bootstrap';
-import "nes.css/css/nes.min.css";
+
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './components/Home';
+
+
+export default function AppReact() {
+    return (
+        <BrowserRouter>
+            <Switch location={location} key={location.pathname}>
+                <Route exact path={'/home'} component={Home} />
+            </Switch>
+        </BrowserRouter>
+    );
+}

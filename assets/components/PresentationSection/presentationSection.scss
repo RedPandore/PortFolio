@@ -1,0 +1,77 @@
+@import '../../styles/basic/variable.scss';
+.presentationSection {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .arrow-box{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        .presentation-arrow{
+            // align to the bottom of section 
+                    width: 35px;
+                    height: 35px;
+                    animation: bounce 0.35s ease infinite alternate;
+                    color: $flash-color;
+                }
+    }
+   
+    .presentation-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .presentation-card {
+            width: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 1fr ;
+            grid-template-areas:
+                "presentation-card-image"
+                "presentation-card-info";
+            padding: 25px;
+            .presentation-card-image {
+                img {
+                    border-radius: 50%;
+                    height: 250px;
+                    width: 250px;
+                    -webkit-box-shadow: -11px 0px 2px 0px #eb1a1a,
+                        -20px 0px 2px 0px #ab2020, -30px 0px 2px 0px #6c2626,
+                        -40px 0px 2px -3px #2c2c2c;
+                    box-shadow: -11px 0px 2px 0px #eb1a1a,
+                        -20px 0px 2px 0px #ab2020, -30px 0px 2px 0px #6c2626,
+                        -40px 0px 2px -3px #2c2c2c;
+                }
+            }
+            .presentation-card-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin-left: 15px;
+                .presentation-card-info-name {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    span {
+                        color: $flash-color;
+                    }
+                }
+                .presentation-card-info-social {
+                    a {
+                        text-decoration: none;
+                        color: $flash-color;
+                        margin-right: 15px;
+                    }
+                    svg {
+                        margin-top: 25px;
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

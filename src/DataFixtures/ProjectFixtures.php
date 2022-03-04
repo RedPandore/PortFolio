@@ -18,7 +18,8 @@ class ProjectFixtures extends Fixture
             $project->setLink('Link '.$i);
 
             $project->setDescription('Description '.$i);
-            $project->setLanguage(['php', 'js']);
+            $project->setBackEnd(['php', 'Symfony']);
+            $project->setFrontEnd(['Js', 'React']);
             $project->setImageName('Image '.$i);
             $manager->persist($project);
         }

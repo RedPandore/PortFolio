@@ -1,0 +1,70 @@
+@import '../../../../styles/basic/variable.scss';
+$targetZ: -600px;
+$targetY: -400px;
+$targetX: 400px;
+.success-message {
+    display: none;
+    border-radius: 15px;
+    background-color: $dark-color;
+    padding: 25px;
+    border: 1px solid $flash-color;
+    -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25;
+    box-shadow: 0px 4px 8px rgba(134, 151, 168, 0.1);
+    animation: animates 1.5s linear; ///////// Revoir l'animation pour avoir un effet de remplissage de la border
+    .success-message-content{
+        opacity: 0;
+    }
+}
+.paper-plane {
+    height: 50px;
+    width: 50px;
+    color: $flash-color;
+    animation: paper-plane-animation 3s linear; // change duration in compenent file too
+}
+.cloud-icon {
+    height: 150px;
+    width: 150px;
+    color: $flash-color;
+    -webkit-transform: translateZ($targetZ - 100px) translateY($targetY)
+        translateX($targetX + 100px);
+    transform: translateZ($targetZ - 100px) translateY($targetY)
+        translateX($targetX + 100px);
+}
+@keyframes paper-plane-animation {
+    0% {
+        -webkit-transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(0deg);
+        transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateZ($targetZ) translateY($targetY)
+            translateX($targetX) scale(0.5) rotate(0deg);
+        transform: translateZ($targetZ) translateY($targetY)
+            translateX($targetX) scale(0.5) rotate(0deg);
+    }
+    51%{
+        -webkit-transform: translateZ($targetZ) translateY($targetY)
+        translateX($targetX) scale(0.5) rotate(180deg);
+        transform: translateZ($targetZ) translateY($targetY)
+        translateX($targetX) scale(0.5) rotate(180deg);
+    }
+    100% {
+        -webkit-transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(180deg);
+        transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(180deg);
+    }
+}
+
+
+
+
+@keyframes animates {
+    0% {
+        border: transparent;
+        -webkit-box-shadow: 5px 5px 15px 5px transparent;
+        box-shadow: 0px 4px 8px transparent;
+    }
+    100% {
+        border: 1px solid $flash-color;
+    -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25;
+    box-shadow: 0px 4px 8px rgba(134, 151, 168, 0.1);
+    }
+}

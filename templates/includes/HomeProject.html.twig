@@ -1,5 +1,7 @@
-<div class="outerProject nes-container is-rounded">
-<button type="button" class="btn-close" id="close-modal" aria-label="Close"><i class="nes-icon close is-small"></i></button>
+<div class="outerProject">
+    <button type="button" class="btn-close" id="close-modal" aria-label="Close">
+        <i class="nes-icon close is-small"></i>
+    </button>
     <div class="inner-left nes-container is-rounded">
         <h2>Mes projets
         </h2>
@@ -14,24 +16,36 @@
     </div>
     <div class="inner-right nes-container is-rounded">
         {% for project in projects %}
-            <div class="project-container" id="project{{ project.id }}" data-project="project{{ project.id}}">
-            <h3>{{ project.name }}</h3>
+            <div class="project-container-game" id="project{{ project.id }}" data-project="project{{ project.id}}">
+                <h3>{{ project.name }}</h3>
                 <div class="img">
                     <img src="{{ vich_uploader_asset(project, 'imageFile') }}" alt="{{ project.name }}">
                 </div>
                 <div class="description">
-                    
+
                     <p>{{ project.description}}</p>
-                    <ul>
-                        {% for backEnd in project.backEnd %}
-                            <li>{{ backEnd }}</li>
-                        {% endfor %}
-                    </ul>
-                    <ul>
-                        {% for frontEnd in project.frontEnd %}
-                            <li>{{ frontEnd }}</li>
-                        {% endfor %}
-                    </ul>
+                    <div class="project-list-game">
+                        <div class="project-inner-game">
+                            <h4>
+                                Back End
+                            </h4>
+                            <ul>
+                                {% for backEnd in project.backEnd %}
+                                    <li>{{ backEnd }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="project-inner-game">
+                            <h4>
+                                Front End
+                            </h4>
+                            <ul>
+                                {% for frontEnd in project.frontEnd %}
+                                    <li>{{ frontEnd }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}

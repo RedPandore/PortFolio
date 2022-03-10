@@ -1,7 +1,7 @@
 @import '../../styles/basic/variable.scss';
 $transition: all 0.5s ease;
 $initial-width: 105px;
-$hover-width: 220px;
+$hover-width: 230px;
 .navbar {
     width: $initial-width;
     height: 100vh;
@@ -14,7 +14,7 @@ $hover-width: 220px;
         .navbar-logo {
             transition: $transition;
             scale: 1.5;
-            margin-top: 15px;
+            margin-top: 25px;
         }
         .navbar-links-container {
             .navbar-links {
@@ -42,12 +42,12 @@ $hover-width: 220px;
         justify-content: center;
         align-items: center;
         img {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
         }
     }
     .navbar-links-container {
-        height: 85vh;
+        height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -55,7 +55,6 @@ $hover-width: 220px;
 
         .navbar-links {
             li {
-               
                 margin-top: 50px;
                 a {
                     display: flex;

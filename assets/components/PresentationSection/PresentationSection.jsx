@@ -87,8 +87,8 @@ export default function PresentationSection() {
             </div>
           </div>
         </div>
-        <div className={"arrow-box"}>
-        <GiPlainArrow className={'presentation-arrow'} />
+        <div className={"arrow-box"} id="ScrollDown">
+       <div className={"circle"}></div>
         </div>
       </div>
     

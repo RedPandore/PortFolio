@@ -52,9 +52,9 @@ Encore
     .addEntry('game', './assets/game/index.js')
     .addEntry('carouselJs', './assets/scripts/carousel.js')
     .addEntry('easyStar', './assets/scripts/easystar.js')
+    .addEntry('darkMode', './assets/scripts/darkModeAdmin.js')
 
     .addEntry('index', './assets/index.js')
-
 
 
 
@@ -63,6 +63,7 @@ Encore
     .addStyleEntry('profil', './assets/styles/game/profil.css')
     .addStyleEntry('gameModal', './assets/styles/game/gameModal.css')
     .addStyleEntry('appGame', './assets/styles/game/appGame.css')
+    .addStyleEntry('admin' , './assets/styles/basic/admin.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

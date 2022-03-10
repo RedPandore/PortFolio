@@ -10,6 +10,8 @@
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    opacity: 1;
+    animation: fadeIn 1s ease-in-out;
 }
 .home-container {
     width: 75vw;
@@ -24,6 +26,7 @@
     font-size: 1.2rem;
     text-align: center;
     margin-bottom: 35px;
+    padding-top: 35px;
     .line {
         margin-bottom: 0.2rem;
         margin-left: 00.2rem;
@@ -59,4 +62,13 @@ scroll-snap-align: start;
 a{
     text-decoration: none;
     color: $light-color;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

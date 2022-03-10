@@ -1,9 +1,6 @@
 .outerProject {
   display: flex;
   flex-direction: row;
-  background-color: #caab7c;
-  background-image: url('../../images/natural-paper.png');
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 .outerProject h2 {
   text-align: center;
@@ -13,6 +10,8 @@
   height: 65vh;
   overflow: scroll;
   direction: rtl;
+  background-color: #caab7c;
+  background-image: url('../../images/natural-paper.png');
 }
 .inner-left .list {
   direction: ltr;
@@ -36,9 +35,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #caab7c;
+  background-image: url('../../images/natural-paper.png');
 }
 
-.inner-right .project-container {
+.inner-right .project-container-game {
   position: absolute;
   display: none;
   opacity: 0;
@@ -57,9 +58,29 @@
   position: inherit;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .inner-right h3 {
   text-align: center;
+}
+.inner-right .description .project-list-game {
+    height: 100%;
+    width: 100%;
+  display: flex;
+  flex-direction: row;
+    justify-content: center;
+}
+
+.inner-right .description .project-list-game .project-inner-game{
+    margin-right: 90px;
+    margin-left: 90px;
+    width: 100%;
+}
+.inner-right .description .project-list-game .project-inner-game h4{
+    text-align: center;
+    text-decoration: underline;
 }
 .inner-right .description ul {
   list-style: none;

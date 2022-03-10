@@ -2,9 +2,13 @@
     font-family: 'Poppins';
     src: url('../../fonts/Poppins-Light.ttf');
 }
-@keyframes bounce{
-    from {transform: translateY(0);}
-    to   {transform: translateY(-5px);}
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
 }
 $section-margin: 15px;
 
@@ -12,5 +16,4 @@ $medium-color: #5a5858;
 $light-color: white;
 $dark-color: #2c2c2c;
 
-
-$flash-color:#dc4c4c;
+$flash-color: #dc4c4c;

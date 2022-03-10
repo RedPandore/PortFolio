@@ -4,7 +4,7 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    
+
     {{ encore_entry_script_tags('game')}}
     {{ encore_entry_script_tags('carouselJs')}}
 
@@ -31,10 +31,14 @@
     <div id="modal4" class="modal">
         {% include "includes/HomeGame.html.twig" %}
     </div>
+     <div id="modal5" class="modal">
+        {% include "includes/Scene2GameOver.html.twig" %}
+    </div>
     <div id="modal6" class="modal">
         {% include "includes/Scene2Start.html.twig" %}
     </div>
-        <div id="modal5" class="modal">
-        {% include "includes/Scene2GameOver.html.twig" %}
+   
+       <div id="exit" class="modal">
+        {% include "includes/HomeExit.html.twig" %}
     </div>
 {% endblock %}

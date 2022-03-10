@@ -1,30 +1,27 @@
-import React, { useEffect } from 'react'
-import '../styles/basic/home.scss'
+import React from 'react'
+import basicPreview from '../images/basicPreview.png'
+import gamePreview from '../images/gamePreview.png'
+import '../styles/basic/Home.scss'
 
-import NavBar from './navbar/navbar'
-import PresentationSection from './PresentationSection/PresentationSection'
-import SkillSection from './SkillSection/SkillSection'
-import ProjectSection from './ProjectSection/ProjectSection'
-import ContactSection from './ContactSection/ContactSection'
-import DescriptionSection from './DescriptionSection/DescriptionSection'
-import toggleActive from '../scripts/ReactApp/toggleActive'
-
-export default function Home() {
-    useEffect(() => {
-        const main = document.querySelector('.home');
-        main.addEventListener('scroll', toggleActive);
-       
-      }, [])
+export default function Home(props) {
   return (
-    <div className={'home'}>
-      <NavBar />
-      <div className="home-container">
-        <PresentationSection />
-        <DescriptionSection />
-        <SkillSection />
-        <ProjectSection />
-        <ContactSection />
+    <section className="home-section">
+      <div className="home-text">
+        <h1>Developpeur web & Web mobile</h1>
+        <p>Quelle version voulez-vous visiter ?</p>
       </div>
-    </div>
+      <div className="home-link">
+        <div className="link-one">
+          <span id="BasicChoise">
+            <img className="link-iframe" src={basicPreview}></img>
+          </span>
+        </div>
+        <div className="link-two">
+          <span id="GameChoise">
+            <img className="link-iframe" src={gamePreview}></img>
+          </span>
+        </div>
+      </div>
+    </section>
   )
 }

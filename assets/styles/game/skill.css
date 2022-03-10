@@ -4,7 +4,7 @@
   flex-wrap: wrap;
 }
 .outerSkill .box {
-  width: 400px;
+  width: 450px;
   height: 350px;
   /* haut | droit | bas | gauche */
   margin: 0 20px 20px 20px;
@@ -19,6 +19,7 @@
   width: 85%;
   border: 1px solid whitesmoke;
 }
+
 .outerSkill .box .inner_box {
   display: flex;
   justify-content: space-around;
@@ -26,7 +27,7 @@
   padding: 10px;
 }
 .outerSkill .box .inner_box .skillBox {
-    background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: space-around;

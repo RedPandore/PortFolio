@@ -23,17 +23,17 @@ export default function ContactForm() {
   const handleSubmit = (event) => {
     setSuccess(false)
     setErrors(null)
-    event.preventDefault()
-    axios
-      .post(`/api/contact_messages`, form)
-      .then(function (response) {
-        setSuccess(true)
-      })
-      .catch(function (error) {
-        if (error.response) {
-          setErrors(error.response.data.violations)
-        }
-      })
+      event.preventDefault()
+      axios
+        .post(`/api/contact_messages`, form)
+        .then(function (response) {
+          setSuccess(true)
+        })
+        .catch(function (error) {
+          if (error.response) {
+            setErrors(error.response.data.violations)
+          }
+        })
   }
 
   function handleError(field) {
@@ -58,19 +58,16 @@ export default function ContactForm() {
 
   function successMessage() {
     if (!errors) {
-      return (
-        <MessageSend />
-      )
+      return <MessageSend />
     }
   }
 
   return (
     <div className="contact-form">
-        
       {success ? (
         successMessage()
       ) : (
-        <form onSubmit={handleSubmit} method="">
+        <form onSubmit={handleSubmit} method="" id="contactForm">
           <div className="contact-form-inputs">
             {success ? successMessage() : null}
             <div className="contact-form-input-wrapper  input-name">

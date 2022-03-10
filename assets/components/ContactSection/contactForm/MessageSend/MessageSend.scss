@@ -1,25 +1,43 @@
 @import '../../../../styles/basic/variable.scss';
 $targetZ: -600px;
 $targetY: -400px;
-$targetX: 400px;
+$targetX: -450px;
 .success-message {
     display: none;
-    border-radius: 15px;
     background-color: $dark-color;
-    padding: 25px;
-    border: 1px solid $flash-color;
-    -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25;
-    box-shadow: 0px 4px 8px rgba(134, 151, 168, 0.1);
-    animation: animates 1.5s linear; ///////// Revoir l'animation pour avoir un effet de remplissage de la border
-    .success-message-content{
-        opacity: 0;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    .svg-wrapper {
+        transform: translateY(-50%);
+        margin: 0 auto;
+        width: 500px;
+        .shape1,
+        .shape2 {
+            stroke-dasharray: 1300;
+            stroke-width: 2px;
+            fill: transparent;
+            stroke: $flash-color;
+        }
+        .shape1 {
+            animation: animateShape1 4s linear;
+        }
+        .shape2 {
+            animation: animateShape2 4s linear;
+        }
+        .successMessageContent {
+            opacity: 0;
+            fill: $flash-color;
+            transition: opacity 0.3s;
+        }
     }
 }
 .paper-plane {
     height: 50px;
     width: 50px;
     color: $flash-color;
-    animation: paper-plane-animation 3s linear; // change duration in compenent file too
+    animation: paper-plane-animation 2.5s linear; // change duration in compenent file too
 }
 .cloud-icon {
     height: 150px;
@@ -32,39 +50,44 @@ $targetX: 400px;
 }
 @keyframes paper-plane-animation {
     0% {
-        -webkit-transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(0deg);
-        transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(0deg);
+        -webkit-transform: translateZ(0) translateY(0) translateX(0) scale(1)
+            rotate(-90deg);
+        transform: translateZ(0) translateY(0) translateX(0) scale(1)
+            rotate(-90deg);
     }
     50% {
         -webkit-transform: translateZ($targetZ) translateY($targetY)
-            translateX($targetX) scale(0.5) rotate(0deg);
+            translateX($targetX) scale(0.5) rotate(-90deg);
         transform: translateZ($targetZ) translateY($targetY)
-            translateX($targetX) scale(0.5) rotate(0deg);
+            translateX($targetX) scale(0.5) rotate(-90deg);
     }
-    51%{
+    51% {
         -webkit-transform: translateZ($targetZ) translateY($targetY)
-        translateX($targetX) scale(0.5) rotate(180deg);
+            translateX($targetX) scale(0.5) rotate(90deg);
         transform: translateZ($targetZ) translateY($targetY)
-        translateX($targetX) scale(0.5) rotate(180deg);
+            translateX($targetX) scale(0.5) rotate(90deg);
     }
     100% {
-        -webkit-transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(180deg);
-        transform: translateZ(0) translateY(0) translateX(0) scale(1) rotate(180deg);
+        -webkit-transform: translateZ(0) translateY(0) translateX(0) scale(1)
+            rotate(90deg);
+        transform: translateZ(0) translateY(0) translateX(0) scale(1)
+            rotate(90deg);
     }
 }
 
-
-
-
-@keyframes animates {
+@keyframes animateShape1 {
     0% {
-        border: transparent;
-        -webkit-box-shadow: 5px 5px 15px 5px transparent;
-        box-shadow: 0px 4px 8px transparent;
+        stroke-dashoffset: 1300;
     }
     100% {
-        border: 1px solid $flash-color;
-    -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25;
-    box-shadow: 0px 4px 8px rgba(134, 151, 168, 0.1);
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes animateShape2 {
+    0% {
+        stroke-dashoffset: -1300;
+    }
+    100% {
+        stroke-dashoffset: 0;
     }
 }

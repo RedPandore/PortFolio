@@ -51,11 +51,9 @@
   align-items: center;
 }
 .profil_left_bottom_left {
-  border-right: 1px solid black;
   width: 75%;
 }
 .profil_left_bottom_right {
-  border-left: 1px solid black;
   width: 75%;
 }
 .profil_left_bottom_right .skillBox,

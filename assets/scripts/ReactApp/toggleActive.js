@@ -16,10 +16,6 @@ export default function toggleActive(linkId) {
          bounding.right <= (window.innerWidth || document.documentElement.clientWidth) ) {
             current = section.id
          }
-     
-     // if (main.scrollTop >= sectionTop - 60) {
-      //  current = section.id
-      //}
     })
     navbarLinks.forEach((link) => {
       link.classList.remove('activeLink')

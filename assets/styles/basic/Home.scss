@@ -1,0 +1,63 @@
+@import '../basic/variable.scss';
+
+body {
+    background-color: $dark-color;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    height: 100%;
+    .home-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        .home-text {
+            color: $light-color;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .home-link {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+
+            .link-one,
+            .link-two {
+                width: 700px;
+                height: 360px;
+                padding: 0;
+                border: 1px solid $medium-color;
+                -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25; 
+                box-shadow:  0px 4px 8px rgba(134, 151, 168, 0.1);
+                img {
+                    width: 100%;
+                    border: none;
+                    object-fit: cover;
+                }
+                &:hover{
+                    border: 1px solid $flash-color;
+                }
+            }
+            .link-one{
+                overflow-y: scroll;
+            }
+        }
+    }
+
+    .fadeOutHome {
+        animation: fadeOut 1.5s ease;
+    }
+}
+
+@keyframes fadeOut{
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

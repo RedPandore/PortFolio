@@ -77,8 +77,6 @@ class MyGame extends Phaser.Scene {
             [1400, 420],
             [1500, 300],
             [1350, 340],
-            [1200, 800],
-            [150, 750],
         ];
         //////////// SetAllTheFish ////////////
         fishStartingPosition.forEach(function (fishPosition, index) {
@@ -132,6 +130,24 @@ class MyGame extends Phaser.Scene {
         overlapObjectsGroup.refresh();
         // add overlap
         this.physics.add.overlap(player, overlapObjectsGroup);
+        ////// Set changing page object \\\\\\\
+        var changePageObjectsGroup = map.getObjectLayer('myObjects')['objects'];
+        changePageObjects = physics.add.staticGroup({});
+        changePageObjectsGroup
+            .filter((obj) => obj.name === 'exit')
+            .forEach((object) => {
+                let obj = changePageObjects.create(object.x, object.y, 'grass');
+                obj.setScale(object.width / 32, object.height / 32); //my tile size was 32
+                obj.setOrigin(0); //the positioning was off, and B3L7 mentioned the default was 0.5
+                obj.body.width = object.width; //body of the physics body
+                obj.body.height = object.height;
+                obj.name = object.name;
+            });
+        changePageObjects.setDepth(-1);
+        //physics body needs to refresh
+        changePageObjects.refresh();
+        // add overlap
+        this.physics.add.overlap(player, changePageObjects);
 
         // move with mouse click
         this.input.on(
@@ -200,6 +216,7 @@ class MyGame extends Phaser.Scene {
             } else if (this.physics.world.overlap(player, obj)) {
                 let objName = obj.name;
                 createModal(objName);
+                console.log(objName);
                 // stop player movement if click
                 if (onClick) {
                     player.body.reset(target.x, target.y);
@@ -210,6 +227,20 @@ class MyGame extends Phaser.Scene {
             }
         });
         //////////// end modal objects ////////////
+
+        //////////// exit objects ////////////
+        changePageObjects.getChildren().forEach((obj) => {
+            if (player.body.touching.none) {
+            } else if (this.physics.world.overlap(player, obj)) {
+                let objName = obj.name;
+                createModal(objName);
+                
+               currentTarget = null;
+               player.setVelocityX(-160);
+            }
+        });
+        //////////// end exit objects ////////////
+
 
         //////////// animal update ////////////
         // check if fish is blocked
@@ -222,6 +253,11 @@ class MyGame extends Phaser.Scene {
             modal4.style.display = 'none';
             game.scene.start('scene2');
         };
+        document.getElementById('exit-game').onclick = function () {
+            game.scene.stop('default');
+
+            window.location.href = "/basic";
+        }
     }
 }
 
@@ -235,7 +271,6 @@ function createModal(objName) {
 }
 
 function closeModal(objName) {
-    console.log(objName);
     let element = document.getElementById(objName);
     element.style.display = 'none';
 }
@@ -309,6 +344,7 @@ var player;
 var cursors;
 
 var overlapObjectsGroup;
+var changePageObjects;
 
 var target = new Phaser.Math.Vector2();
 var onClick = false;

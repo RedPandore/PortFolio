@@ -6,13 +6,14 @@ use App\Entity\ContactMessage;
 use App\Entity\User;
 use App\Entity\Skill;
 use App\Entity\Project;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
-#[Route('/admin', name: 'admin_')]
+#[Route('/adminth', name: 'admin_')]
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/', name: 'index')]
@@ -52,5 +53,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Compétences', 'fas fa-list', Skill::class);
         yield MenuItem::linkToCrud('Projets', 'fas fa-project-diagram', Project::class);
         yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', ContactMessage::class);
+    }
+
+    public function configureAssets(): Assets
+    {
+        return parent::configureAssets()
+        ->addWebpackEncoreEntry('darkMode')
+        ->addWebPackEncoreEntry('admin');
     }
 }

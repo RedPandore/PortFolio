@@ -7,18 +7,34 @@
     flex-direction: column;
     .arrow-box{
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: flex-end;
-
-        .presentation-arrow{
-            // align to the bottom of section 
-                    width: 35px;
-                    height: 35px;
-                    animation: bounce 0.35s ease infinite alternate;
-                    color: $flash-color;
-                }
+        border: 2px solid $flash-color;
+        border-radius: 2em;
+        height: 75px;
+        margin-bottom: 15px;
+        padding: 2px;
+      .circle{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $flash-color;
+        animation: BounceCircle 4s infinite;
+        opacity: 1;
+        transition: opacity 0.5s;
+      }
     }
-   
+   @keyframes BounceCircle {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-35px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
     .presentation-container {
         height: 100%;
         width: 100%;
@@ -39,12 +55,12 @@
                     border-radius: 50%;
                     height: 250px;
                     width: 250px;
-                    -webkit-box-shadow: -11px 0px 2px 0px #eb1a1a,
-                        -20px 0px 2px 0px #ab2020, -30px 0px 2px 0px #6c2626,
+                    -webkit-box-shadow: -11px 0px 2px 0px #DC4C4C,
+                        -20px 0px 2px 0px #A14141, -30px 0px 2px 0px #673737,
                         -40px 0px 2px -3px #2c2c2c;
-                    box-shadow: -11px 0px 2px 0px #eb1a1a,
-                        -20px 0px 2px 0px #ab2020, -30px 0px 2px 0px #6c2626,
-                        -40px 0px 2px -3px #2c2c2c;
+                    box-shadow: -11px 0px 2px 0px #DC4C4C,
+                    -20px 0px 2px 0px #A14141, -30px 0px 2px 0px #673737,
+                    -40px 0px 2px -3px #2c2c2c;
                 }
             }
             .presentation-card-info {

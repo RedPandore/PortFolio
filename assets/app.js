@@ -19,7 +19,7 @@ export default function AppReact() {
                     zIndex: '-1',
                 }}
                 options={{
-                    fpsLimit: 60,
+                    fpsLimit: 30,
                     interactivity: {
                         detectsOn: 'window',
                         events: {

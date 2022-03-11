@@ -3,7 +3,7 @@ import basicPreview from '../images/basicPreview.png'
 import gamePreview from '../images/gamePreview.png'
 import '../styles/basic/Home.scss'
 
-export default function Home(props) {
+export default function Home() {
   return (
     <section className="home-section">
       <div className="home-text">

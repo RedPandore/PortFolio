@@ -13,7 +13,8 @@ body {
 #modal4,
 #modal5,
 #modal6,
-#exit {
+#exit,
+#indexStart {
   display: none;
   width: 1400px;
   height: 700px;

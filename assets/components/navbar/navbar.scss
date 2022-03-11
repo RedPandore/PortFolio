@@ -1,5 +1,5 @@
 @import '../../styles/basic/variable.scss';
-$transition: all 0.5s ease;
+$transition: all 0.5s ease-in-out;
 $initial-width: 105px;
 $hover-width: 230px;
 .navbar {
@@ -8,6 +8,7 @@ $hover-width: 230px;
     position: fixed;
     transition: $transition;
     background-color: $flash-color;
+
     &:hover {
         width: $hover-width;
         transition: $transition;
@@ -19,13 +20,30 @@ $hover-width: 230px;
         .navbar-links-container {
             .navbar-links {
                 a {
-                    
                     span {
                         transition: $transition;
                         opacity: 1;
                         font-size: 20px;
                     }
-                    &:hover{
+                    &:hover {
+                        color: $flash-color;
+                        background-color: $dark-color;
+                        transition: all 0.1s ease;
+                    }
+                }
+            }
+            hr {
+                transition: $transition;
+                width: 200px;
+            }
+            .navbar-links-game{
+                a {
+                    span {
+                        transition: $transition;
+                        opacity: 1;
+                        font-size: 20px;
+                    }
+                    &:hover {
                         color: $flash-color;
                         background-color: $dark-color;
                         transition: all 0.1s ease;
@@ -51,9 +69,7 @@ $hover-width: 230px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-       
-
-        .navbar-links {
+         .navbar-links {
             li {
                 margin-top: 50px;
                 a {
@@ -69,8 +85,36 @@ $hover-width: 230px;
                         margin-left: $initial-width/3;
                     }
                     span {
-                       opacity: 0;
-                       font-size: 0;
+                        opacity: 0;
+                        font-size: 0;
+                    }
+                }
+            }
+        }
+        hr {
+            width: 80px;
+            margin-top: 50px;
+            color: $dark-color;
+            transition: $transition;
+        }
+        .navbar-links-game{
+            li {
+                margin-top: 50px;
+                a {
+                    display: flex;
+                    flex-direction: row;
+                    color: $dark-color;
+                    text-decoration: none;
+                    padding: 5px;
+                    svg {
+                        width: 25px;
+                        height: 25px;
+                        margin-right: 5px;
+                        margin-left: $initial-width/3;
+                    }
+                    span {
+                        opacity: 0;
+                        font-size: 0;
                     }
                 }
             }
@@ -78,8 +122,8 @@ $hover-width: 230px;
     }
 }
 
-.activeLink{
-    *{
+.activeLink {
+    * {
         color: white;
         transition: all 0.5s ease;
     }

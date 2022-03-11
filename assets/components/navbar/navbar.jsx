@@ -5,6 +5,7 @@ import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
 import { GiSkills } from 'react-icons/gi'
 import { VscProject } from 'react-icons/vsc'
 import { MdOutlineConnectWithoutContact } from 'react-icons/md'
+import { FaGamepad } from 'react-icons/fa'
 
 export default function NavBar() {
 
@@ -51,6 +52,16 @@ export default function NavBar() {
               <MdOutlineConnectWithoutContact /> <span>Contact</span>
             </a>
           </li>
+        </ul>
+        <hr/>
+        <ul className="navbar-links-game">
+            <li>
+                <a href="
+                /game"
+                >
+                <FaGamepad /> <span>Version jeu</span>
+                </a>
+            </li>
         </ul>
       </div>
     </div>

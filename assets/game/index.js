@@ -160,9 +160,22 @@ class MyGame extends Phaser.Scene {
             this
         );
         scene = this.scene;
+
+
+          // when game starts, we want to pause all physics bodies
+          allPhysics.pause();
+          // Explain to the player how to play the game
+          startText = document.querySelector('#indexStart');
+          startText.style.display = 'block';
     }
 
     update(time, deltaTime) {
+        // when the user presses the spacebar, we want to start the game
+        if (cursors.space.isDown) {
+            allPhysics.resume();
+            startText.style.display = 'none';
+        }
+
         //////////// movement ////////////
         if (
             !onClick &&
@@ -342,7 +355,7 @@ const game = new Phaser.Game(config);
 var allPhysics;
 var player;
 var cursors;
-
+var startText;
 var overlapObjectsGroup;
 var changePageObjects;
 

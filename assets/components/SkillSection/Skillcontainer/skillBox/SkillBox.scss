@@ -28,3 +28,28 @@
         animation: bounce 0.35s ease infinite alternate;
     }
 }
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .skill-box {
+        width: 80px;
+        height: 80px;
+        padding: 10px;
+        margin: 5px;
+        .skill-box-title{
+            font-size: 12px;
+        }
+    }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1081px) {
+    /* iPads portrait et landscape */
+    .skill-box {
+        width: 90px;
+        height: 90px;
+        padding: 10px;
+        margin: 5px;
+        .skill-box-title{
+            font-size: 15px;
+        }
+    }
+}

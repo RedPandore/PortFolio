@@ -4,9 +4,8 @@
     background-color: $dark-color;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-
 }
-.home{
+.home {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -17,7 +16,6 @@
     width: 75vw;
     margin: auto;
     color: $light-color;
-
 }
 .section-title {
     color: $flash-color;
@@ -36,10 +34,10 @@
         background: $flash-color;
     }
 }
-.button{
+.button {
     background-color: $flash-color;
     color: $dark-color;
-    
+
     border: 1px solid $flash-color;
     border-radius: 0.25em;
     font-size: 1.2rem;
@@ -56,10 +54,10 @@
 span[class='overlight'] {
     color: $flash-color;
 }
-.mandatory-scroll-snapping{
-scroll-snap-align: start;
+.mandatory-scroll-snapping {
+    scroll-snap-align: start;
 }
-a{
+a {
     text-decoration: none;
     color: $light-color;
 }
@@ -72,3 +70,23 @@ a{
         opacity: 1;
     }
 }
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .home {
+        scroll-snap-type: none;
+    }
+    .mandatory-scroll-snapping {
+        scroll-snap-align: center;
+    }
+    .home-container {
+        width: 100vw;
+    }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1081px) {
+    /* iPads portrait et landscape */
+    .home-container {
+        width: 85vw;
+        margin-left: 10vh;
+    }
+    }

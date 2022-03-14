@@ -1,6 +1,6 @@
 @import '../../../styles/basic/variable.scss';
 
-.skill-container{
+.skill-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,4 +12,16 @@
     width: 60vw;
     margin: $section-margin;
     background-color: $dark-color;
+}
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .skill-container {
+        width: 90vw;
+    }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1081px) {
+    /* iPads portrait et landscape */
+    .skill-container {
+        width: 70vw;
+    }
 }

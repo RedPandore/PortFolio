@@ -28,7 +28,7 @@ export default function ProjectCard(props) {
               ))}
             </ul>
           </div>
-          <div className="price"></div>
+    
           <div className="framework">
             <h4>Front End</h4>
             <ul>

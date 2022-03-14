@@ -91,3 +91,12 @@ $targetX: -450px;
         stroke-dashoffset: 0;
     }
 }
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .success-message {
+        .svg-wrapper {
+            margin-top: 90px;
+        }
+    }
+}

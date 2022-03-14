@@ -36,7 +36,7 @@ $hover-width: 230px;
                 transition: $transition;
                 width: 200px;
             }
-            .navbar-links-game{
+            .navbar-links-game {
                 a {
                     span {
                         transition: $transition;
@@ -69,7 +69,7 @@ $hover-width: 230px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-         .navbar-links {
+        .navbar-links {
             li {
                 margin-top: 50px;
                 a {
@@ -97,7 +97,7 @@ $hover-width: 230px;
             color: $dark-color;
             transition: $transition;
         }
-        .navbar-links-game{
+        .navbar-links-game {
             li {
                 margin-top: 50px;
                 a {
@@ -128,3 +128,56 @@ $hover-width: 230px;
         transition: all 0.5s ease;
     }
 }
+
+
+@media only screen and (min-width: 768px) {
+    /* tablettes et ordinateurs */
+    }
+    @media only screen and (max-width: 767px) {
+    /* smartphone */
+    .navbar{
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        &:hover {
+            width: 100%;
+        }
+        .navbar-logo{
+            width: 100%;
+            height: 50px;
+            margin-top: 10px;
+            img{
+                width: 150px;
+                height: 150px;
+            }
+        }
+        .navbar-links-container{
+            display: none;
+        }
+
+    }
+    }
+    @media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .navbar{
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        z-index: 10;
+        &:hover {
+            width: 100%;
+        }
+        .navbar-logo{
+            width: 100%;
+            height: 100px;
+            img{
+                width: 150px;
+                height: 150px;
+            }
+        }
+        .navbar-links-container{
+            display: none;
+        }
+
+    }
+    }

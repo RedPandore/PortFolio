@@ -13,7 +13,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-     
+
         .contact-form-inputs {
             display: grid;
             grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
@@ -23,7 +23,7 @@
             border-radius: 15px;
             -webkit-box-shadow: 5px 5px 15px 5px #fffbfb25;
             box-shadow: 0px 4px 8px rgba(134, 151, 168, 0.1);
-     
+
             .input-email {
                 grid-row: 1 / 2;
                 grid-column: 3 / 5;
@@ -77,6 +77,41 @@
         }
         .form-error {
             color: $flash-color;
+        }
+    }
+}
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .contact-form {
+        form {
+            .contact-form-inputs {
+               display: block;
+
+                width: 90%;
+
+                .input-email {
+                    grid-row: 1 / 2;
+                    grid-column: 1 / 5;
+                }
+                .input-name {
+                    grid-row: 2 / 3;
+                    grid-column: 1 / 5;
+                }
+                .input-subject {
+                    grid-row: 3 / 4;
+                    grid-column: 1 / 5;
+                }
+                .input-message {
+                    grid-row: 4 / 5;
+                    grid-column: 1 / 5;
+                }
+            }
+            .input-email,
+            .input-name,
+            .input-subject,
+            .input-message {
+                margin: 0;
+            }
         }
     }
 }

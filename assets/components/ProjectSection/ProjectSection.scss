@@ -1,9 +1,24 @@
-.projectSection{
+.projectSection {
     height: 100vh;
-    .project-container{
+    .project-container {
         display: flex;
         justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
+    }
+}
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    .projectSection {
+        height: 100%;
+        .project-container {
+            height: 100%;
+        }
+    }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1081px) {
+    /* iPads portrait et landscape */
+    .projectSection {
+        height: 100%;
     }
 }

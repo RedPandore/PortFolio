@@ -269,7 +269,7 @@ class MyGame extends Phaser.Scene {
         document.getElementById('exit-game').onclick = function () {
             game.scene.stop('default');
 
-            window.location.href = "/basic";
+            window.location.href = "/";
         }
     }
 }

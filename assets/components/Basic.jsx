@@ -10,11 +10,13 @@ import ContactSection from './ContactSection/ContactSection'
 import DescriptionSection from './DescriptionSection/DescriptionSection'
 import toggleActive from '../scripts/ReactApp/toggleActive'
 import Home from './Home'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 export default function Basic() {
 
   useEffect(() => {
-      const main = document.querySelector('.home')
+    const main = document.querySelector('.home')
+     if(isBrowser) {
       const basicButton = document.getElementById('BasicChoise')
       const gameButton = document.getElementById('GameChoise')
       const homeSection = document.querySelector('.home-section')
@@ -34,7 +36,11 @@ export default function Basic() {
         setTimeout(() => {
             window.location.href = '/game'
         }, 800)
-    })
+    })}
+    if(isMobile){
+        main.addEventListener('scroll', toggleActive)
+        main.addEventListener('scroll', ScrollDown)
+    }
   }, [])
 
   function ScrollDown() {
@@ -42,7 +48,8 @@ export default function Basic() {
   }
   return (
     <>
-    <Home/>
+    {isBrowser ? (
+    <Home/> ) : (' ')}
         <div className={'home'}>
           <NavBar />
           <div className="home-container">

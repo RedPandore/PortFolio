@@ -1,3 +1,5 @@
+@import '../../styles/basic/variable.scss';
+
 .projectSection {
     height: 100vh;
     .project-container {
@@ -6,7 +8,37 @@
         align-items: center;
         flex-wrap: wrap;
     }
+    .react-hooks-paginator {
+        margin: 0px;
+        .page-item {
+            &.active {
+                .page-link {
+                    background-color: $dark-color;
+                    border-color: $flash-color;
+                    color: $light-color;
+                    font-weight: 900;
+                }
+            }
+            &.null {
+                .page-link {
+                    background-color: $dark-color;
+                    border-color: $flash-color;
+                    color: $flash-color;
+                    font-weight: 900;
+                }
+                &:hover {
+                    .page-link {
+                        background-color: $flash-color;
+                        border-color: $flash-color;
+                        color: $dark-color;
+                        font-weight: 900;
+                    }
+                }
+            }
+        }
+    }
 }
+
 @media only screen and (max-width: 767px) and (orientation: portrait) {
     /* smartphone en mode portait */
     .projectSection {

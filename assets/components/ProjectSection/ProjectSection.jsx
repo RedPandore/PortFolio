@@ -1,23 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProjectSection.scss'
 import ProjectCard from './projectCard/ProjectCard'
 import axios from 'axios'
+import Paginator from 'react-hooks-paginator'
 
 export default function ProjectSection() {
-  const [projects, setProjects] = React.useState([])
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [projects, setProjects] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  React.useEffect(() => {
+  const pageLimit = 4
+  const [offset, setOffset] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [currentData, setCurrentData] = useState([])
+
+  useEffect(() => {
     axios
       .get('/api/projects')
       .then((response) => {
         setProjects(response.data)
-        setIsLoading(false)
+
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
+  useEffect(() => {
+    setCurrentData(projects.slice(offset, offset + pageLimit))
+    setIsLoading(false)
+  }, [offset, projects])
+
   return (
     <section className={'mandatory-scroll-snapping'} id="FourthSection">
       <div className={'projectSection'}>
@@ -29,11 +40,22 @@ export default function ProjectSection() {
           {isLoading ? (
             <div>Loading...</div>
           ) : (
-            projects.map((project) => (
-              <ProjectCard project={project} key={project.id} />
-            ))
+            <>
+              {currentData.map((project) => (
+                <ProjectCard project={project} key={project.id} />
+              ))}
+             
+            </>
           )}
         </div>
+        <Paginator
+                totalRecords={projects.length}
+                pageLimit={pageLimit}
+                pageNeighbours={2}
+                setOffset={setOffset}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
       </div>
     </section>
   )

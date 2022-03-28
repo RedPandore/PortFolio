@@ -11,7 +11,7 @@ import Particles from 'react-tsparticles';
 export default function AppReact() {
     return (
         <BrowserRouter>
-           <Particles
+          <Particles
                 id="tsparticles"
                 style={{
                     width: '100%',

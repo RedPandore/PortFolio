@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './navbar.scss'
 import Logo from '../../images/tens-logo.png'
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
@@ -6,9 +6,9 @@ import { GiSkills } from 'react-icons/gi'
 import { VscProject } from 'react-icons/vsc'
 import { MdOutlineConnectWithoutContact } from 'react-icons/md'
 import { FaGamepad } from 'react-icons/fa'
+import { isBrowser} from 'react-device-detect'
 
 export default function NavBar() {
-
   return (
     <div className="navbar">
       <div className="navbar-logo">
@@ -17,54 +17,51 @@ export default function NavBar() {
       <div className="navbar-links-container">
         <ul className="navbar-links" id="navbar-links">
           <li id="Presentation" className="FirstSection">
-            <a
-              href="#FirstSection"
-            >
+            <a href="#FirstSection">
               <AiOutlineHome />
               <span>Accueil</span>
             </a>
           </li>
           <li id="Description" className="SecondSection">
-            <a
-              href="#SecondSection"
-            >
+            <a href="#SecondSection">
               <AiOutlineUser /> <span>À propos</span>
             </a>
           </li>
           <li id="Skill" className="ThirdSection">
-            <a
-              href="#ThirdSection"
-            >
+            <a href="#ThirdSection">
               <GiSkills /> <span>Compétences</span>
             </a>
           </li>
           <li id="Project" className="FourthSection">
-            <a
-              href="#FourthSection"
-            >
+            <a href="#FourthSection">
               <VscProject /> <span>Mes projets</span>
             </a>
           </li>
           <li id="Contact" className="FifthSection">
-            <a
-              href="#FifthSection"
-            >
+            <a href="#FifthSection">
               <MdOutlineConnectWithoutContact /> <span>Contact</span>
             </a>
           </li>
         </ul>
-        <hr/>
-        <ul className="navbar-links-game">
-            <li>
-                <a href="
+        {isBrowser ? (
+          <>
+            {' '}
+            <hr />
+            <ul className="navbar-links-game">
+              <li>
+                <a
+                  href="
                 /game"
                 >
-                <FaGamepad /> <span>Version jeu</span>
+                  <FaGamepad /> <span>Version jeu</span>
                 </a>
-            </li>
-        </ul>
+              </li>
+            </ul>
+          </>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   )
 }
-

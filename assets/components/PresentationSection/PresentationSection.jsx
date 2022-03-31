@@ -5,7 +5,6 @@ import axios from 'axios'
 import { AiFillGithub } from 'react-icons/ai'
 import { FaLinkedin, FaDiscord } from 'react-icons/fa'
 import { SiGmail } from 'react-icons/si'
-import {GiPlainArrow} from 'react-icons/gi'
 import SkilltypeWritter from './TypeWritter/SkilltypeWritter'
 
 export default function PresentationSection() {
@@ -29,8 +28,8 @@ export default function PresentationSection() {
   }, [])
 
   return (
-    <section className={'mandatory-scroll-snapping'} id="FirstSection">
-      <div className="presentationSection">
+    <section className={'mandatory-scroll-snapping'} id="FirstSection" >
+      <div className="presentationSection" >
         <div className={'presentation-container'}>
           <div className={'presentation-card'}>
             <div className={'presentation-card-image'}>

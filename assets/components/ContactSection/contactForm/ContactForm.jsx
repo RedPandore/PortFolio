@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './ContactForm.scss'
 import axios from 'axios'
 import MessageSend from './MessageSend/MessageSend'

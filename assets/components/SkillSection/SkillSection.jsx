@@ -30,8 +30,6 @@ var skillsList = []
 skills.map((skill) => {
     skillsList.push(skill.name)
 })
-console.log(skillsList)
-
 
   return (
     <section className={'mandatory-scroll-snapping'} id="ThirdSection">

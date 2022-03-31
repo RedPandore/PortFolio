@@ -48,8 +48,7 @@ function Word({ children, ...props }) {
 function Cloud({ count = 4, radius = 20, wordsList = [] }) {
   // Create a count x count random words with spherical distribution
 var wordss = wordsList
-
-  const words = useMemo(() => { 
+ const words = useMemo(() => { 
     const temp = []
     const spherical = new THREE.Spherical()
     const phiSpan = Math.PI / (count + 1)
@@ -66,15 +65,16 @@ var wordss = wordsList
         ])
     return temp
   }, [count, radius])
-  
+
   return words.map(([pos, word], index) => (
-    <Word key={index} position={pos} children={word} />
+    <Word key={index} position={pos} children={word}/>
   ))
 }
 
 export default function CanvasWrapper(skillsList) {
 
     var wordsList = skillsList.skillsList
+
   return (
     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 65], fov: 90 }}>
       <Suspense fallback={null}>

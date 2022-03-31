@@ -6,11 +6,11 @@ import { FaLinkedin, FaDiscord } from 'react-icons/fa'
 import { SiGmail } from 'react-icons/si'
 
 export default function ContactMethod() {
-  const [linkedin, setLinkedin] = React.useState()
-  const [discord, setDiscord] = React.useState()
-  const [email, setEmail] = React.useState()
+  const [linkedin, setLinkedin] = useState()
+  const [discord, setDiscord] = useState()
+  const [email, setEmail] = useState()
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get('/api/users').then((res) => {
       setLinkedin(res.data[0].linkedin)
       setDiscord(res.data[0].discord)

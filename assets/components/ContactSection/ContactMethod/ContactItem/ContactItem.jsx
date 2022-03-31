@@ -1,5 +1,4 @@
 import React from 'react'
-import { imageUploadUrl } from '../../../../scripts/ReactApp/image'
 import './ContactItem.scss'
 
 export default function ContactItem(props) {

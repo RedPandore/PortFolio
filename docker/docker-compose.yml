@@ -15,7 +15,7 @@ services:
       - my-db:/var/lib/mysql
 
   app:
-    image: 968543fa851d
+    image: a16731f48a66
     ports:
       - "8080:80"
     

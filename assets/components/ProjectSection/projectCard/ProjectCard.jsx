@@ -4,7 +4,6 @@ import { imageUploadUrl } from '../../../scripts/ReactApp/image'
 
 export default function ProjectCard(props) {
   const { project } = props
-
   var backEnd
   project.backEnd ? (backEnd = Object.entries(project.backEnd)) : (backEnd = [])
   var frontEnd
@@ -12,7 +11,6 @@ export default function ProjectCard(props) {
     ? (frontEnd = Object.entries(project.frontEnd))
     : (frontEnd = [])
   var backgroundImage = imageUploadUrl(project.imageName)
-
   return (
     <div className={'outerCard'}>
       <a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -30,7 +28,7 @@ export default function ProjectCard(props) {
               ))}
             </ul>
           </div>
-    
+
           <div className="framework">
             <h4>Front End</h4>
             <ul>

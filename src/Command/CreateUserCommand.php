@@ -36,31 +36,27 @@ class CreateUserCommand extends Command
         $io = new SymfonyStyle($input, $output);
         
         // ask for the user name
-        $name = $io->ask('Email');
+       
         $password = $io->ask('Mot de passe');
-        $firstName = $io->ask('Prenom');
-        $lastName = $io->ask('Nom');
-        $phone = $io->ask('Telephone');
-        $address = $io->ask('Adresse');
-        $city = $io->ask('Ville');
-        $zipCode = $io->ask('Code postal');
-        $country = $io->ask('Pays');
-        $job = $io->ask('Profession');
 
 
         $user = new User();
-        $user->setEmail($name);
+        $user->setEmail('tennessee.houry@deviteasy.fr');
         $user->setPassword($password);
-        $user->setFirstName($firstName);
-        $user->setLastName($lastName);
-        $user->setPhone($phone);
-        $user->setAddress($address);
-        $user->setCity($city);
-        $user->setZipCode($zipCode);
-        $user->setCountry($country);
-        $user->setJob($job);
+        $user->setFirstName('Tennessee');
+        $user->setLastName('Houry');
+        $user->setPhone('0761793355');
+        $user->setAddress('667 rue saint michel');
+        $user->setCity('Loury');
+        $user->setZipCode('45470');
+        $user->setCountry('France');
+        $user->setJob('Développeur Web');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setImageName('default.png');
+        $user->setGithub('https://github.com/RedPandore/');
+        $user->setLinkedin('https://www.linkedin.com/in/tennessee-houry-5b1b3b1b9/');
+        $user->setDiscord('Tennessee#0001');
+        $user->setDescription('Je suis un développeur web Freelance, je suis passionné par le développement web et le développement mobile.');
 
         $this->em->persist($user);
         $this->em->flush();

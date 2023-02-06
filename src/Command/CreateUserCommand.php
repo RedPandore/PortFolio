@@ -11,6 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[AsCommand(
     name: 'app:make-user',
@@ -18,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class CreateUserCommand extends Command
 {
-    public function __construct(private EntityManagerInterface $em)
+    public function __construct(private EntityManagerInterface $em, private UserPasswordHasherInterface $userPasswordHasherInterface)
     {
         parent::__construct();
     }
@@ -39,10 +40,10 @@ class CreateUserCommand extends Command
        
         $password = $io->ask('Mot de passe');
 
-
         $user = new User();
+
         $user->setEmail('tennessee.houry@deviteasy.fr');
-        $user->setPassword($password);
+        $user->setPassword($this->userPasswordHasherInterface->hashPassword($user, $password));
         $user->setFirstName('Tennessee');
         $user->setLastName('Houry');
         $user->setPhone('0761793355');

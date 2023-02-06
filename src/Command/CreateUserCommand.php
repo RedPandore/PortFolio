@@ -60,6 +60,7 @@ class CreateUserCommand extends Command
         $user->setCountry($country);
         $user->setJob($job);
         $user->setRoles(['ROLE_ADMIN']);
+        $user->setImageName('default.png');
 
         $this->em->persist($user);
         $this->em->flush();

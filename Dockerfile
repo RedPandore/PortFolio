@@ -65,7 +65,7 @@ COPY . /var/www/
 COPY --from=vendor /app/vendor /var/www/vendor
 COPY --from=nodejs /app/public/build /var/www/public/build
 
-
+# expose port 80
 EXPOSE 80
 
 COPY docker/entrypoint/docker-entry.sh /etc/entrypoint.sh

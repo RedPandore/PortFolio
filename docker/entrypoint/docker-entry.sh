@@ -6,6 +6,8 @@ php docker/composer.phar install --no-interaction --prefer-dist --optimize-autol
 php bin/console doctrine:database:create --if-not-exists
 php bin/console doctrine:schema:update --force
 
+php bin/console ckeditor:install
+
 php bin/console cache:clear
 php bin/console cache:warmup
 
